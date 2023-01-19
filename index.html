@@ -101,6 +101,14 @@
 	</style>
 
 	<script>
+		document.onkeydown = function(e) {
+			if (!e)
+				e = window.event;//火狐中是 window.event
+			if ((e.keyCode || e.which) == 13) {
+				submitFunc();
+			}
+		}
+
 		window.onload = function (){
 			//点击登录时：跳转页面
 
@@ -117,7 +125,7 @@
 				username.value = ''
 				password.value = ''
 				//跳转(首页)
-				window.location.href = "coding/index.html"
+				window.location.href = "coding/home.html"
 			}else{
 				alert("账号或密码：有误，请重新输入。");
 			}
@@ -129,8 +137,8 @@
 	<div class="login-wrapper">
 		<div class="header">Cologne</div>
 		<div class="form-wrapper">
-			<input type="text" id="username" name="username" placeholder="username" class="input-item"/>
-			<input type="password" id= "password" name="password" placeholder="password" class="input-item"/>
+			<input type="text" id="username" name="username" placeholder="username" value="" class="input-item"/>
+			<input type="password" id= "password" name="password" placeholder="password" value="" class="input-item"/>
 			<button id="loginBtn" class="btn" onclick="submitFunc()">登录</button>
 		</div>
 	</div>

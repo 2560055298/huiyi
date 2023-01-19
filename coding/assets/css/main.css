@@ -1621,6 +1621,10 @@ input, select, textarea {
 			margin: 0 0 2em 0;
 		}
 
+		.myIndexImage{
+			border-radius: 5px;
+		}
+
 /* Button */
 
 	input[type="button"],
@@ -1958,6 +1962,11 @@ input, select, textarea {
 		padding: 6em 0 9em 0;
 	}
 
+	.wrapper1 {
+		position: relative;
+		padding: 0.2em 0 0.5em 0;
+	}
+
 		.wrapper .title {
 			position: absolute;
 			top: 0;
@@ -2276,6 +2285,13 @@ input, select, textarea {
 		color: #eee;
 		color: rgba(255, 255, 255, 0.5);
 		padding-bottom: 6em;
+	}
+
+	#footer1 {
+		background: #282b34 url("images/overlay.png");
+		color: #eee;
+		color: rgba(255, 255, 255, 0.5);
+		padding-bottom: 0.5em;
 	}
 
 		#footer h1, #footer h2, #footer h3, #footer h4, #footer h5, #footer h6, #footer strong, #footer b, #footer a {
@@ -2877,7 +2893,7 @@ input, select, textarea {
 			}
 
 				.homepage #header {
-					height: 20em;
+					height: 30em;
 				}
 
 		/* Logo */
