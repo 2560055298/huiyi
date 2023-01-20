@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #000;
+    }
+  </style>
+</head>
+
+<body>
+<canvas id="canvas">小南瓜</canvas>
+</body>
+<script>
+  //  获取canvas dom
+  let canvas = document.getElementById("canvas");
+  ctx = canvas.getContext("2d");
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+  //这个是颜色
+  hue = 217;
+  //组装星星用的数组
+  stars = [];
+  count = 0;
+  //最大星星数
+  maxStars = 1400;
+  //下面开始写一个星星
+  // 这里创建一颗星星
+  let canvas2 = document.createElement("canvas");
+  ctx2 = canvas2.getContext("2d");
+  //设置宽高
+  canvas2.width = 100;
+  canvas2.height = 100;
+  let half = canvas2.width / 2;
+  //设置大小 开始圆圈 开始半径 结束圆圈 结束圆圈半径
+  gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
+  //设置渐变
+  gradient2.addColorStop(0.025, "#fff");
+  gradient2.addColorStop(0.1, "hsl(" + hue + ",61%,33%)");
+  gradient2.addColorStop(0.25, "hsl(" + hue + ",64%,6%)");
+  gradient2.addColorStop(1, "transparent");
+  //这里先做实验看看效果 因为这个要写到ctx2里面 所以改为ctx2
+  ctx2.fillStyle = gradient2;
+  ctx2.beginPath();
+  ctx2.arc(half, half, half, 0, Math.PI * 2);
+  ctx2.fill();
+
+  //写个最小与最大调换的函数
+  function random(min, max) {
+    //如果说参数小于两个
+    if (arguments.length < 2) {
+      max = min;
+      min = 0;
+    }
+    if (min > max) {
+      let hold = max;
+      max = min;
+      min = hold;
+    }
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  let Star = function () {
+    //与圆心的距离
+    this.orbitRadius = random(w / 2 - 50);
+    //星星的半径
+    this.radius = random(100, this.orbitRadius) / 10;
+    //x轴半径填充
+    this.orbitX = w / 2;
+    //y轴半径填充
+    this.orbitY = h / 2;
+    //弧长
+    this.timePassed = random(0, maxStars);
+    //移动速率
+    this.speed = random(this.orbitRadius) / 90000;
+    //透明度
+    this.alpha = random(2, 10) / 10;
+    //当前星星在星星数组里面的下标
+    count++;
+    stars[count] = this;
+  };
+  //画出星星的方法
+  Star.prototype.draw = function () {
+    let x = Math.sin(this.timePassed + 1) * this.orbitRadius + this.orbitX,
+            y = (Math.cos(this.timePassed) * this.orbitRadius) / 2 + this.orbitY;
+    twinkle = random(10);
+    //闪烁情况
+    if (twinkle === 1 && this.alpha > 0) {
+      this.alpha -= 0.05;
+    } else if (twinkle === 2 && this.alpha < 1) {
+      this.alpha += 0.05;
+    }
+    //globalAlpha 属性设置或返回绘图当前透明数值
+    ctx.globalAlpha = this.alpha;
+    //下面绘制
+    ctx.drawImage(
+            canvas2,
+            x - this.radius / 2,
+            y - this.radius / 2,
+            this.radius,
+            this.radius
+    );
+    this.timePassed += this.speed;
+  };
+  for (let i = 0; i < maxStars; i++) {
+    new Star();
+  }
+  function animation() {
+    //默认 在目标图形上显示源图像
+    ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 0.8;
+    ctx.fillStyle = "hsla(" + hue + ",64%,6%,1)";
+    ctx.fillRect(0, 0, w, h);
+    //显示源图像 + 目标图像
+    ctx.globalCompositeOperation = "lighter";
+    for (let i = 1, l = stars.length; i < l; i++) {
+      stars[i].draw();
+    }
+    window.requestAnimationFrame(animation);
+  }
+  animation();
+</script>
+
+</html>
