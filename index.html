@@ -1,145 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>小星的家</title>
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-		}
-		html {
-			height: 100%;
-		}
-		body {
-			height: 100%;
-		}
-		.container {
-			height: 100%;
-			background-image: url("img/login/bg2.jpg");			position:absolute;
-			top:0;
-			left:0;
-			height:100%;
-			width:100%;
-			/*background-image:url("maskimg/star.jpg");*/
-			background-position: center 0;
-			background-repeat: no-repeat;
-			background-attachment:fixed;
-			background-size: cover;
-			-webkit-background-size: cover;/* 兼容Webkit内核浏览器如Chrome和Safari */
-			-o-background-size: cover;/* 兼容Opera */
-			zoom: 1;
-		}
-		.login-wrapper {
-			background-color: #fff;
-			width: 314px;
-			height: 460px;
-			border-radius: 15px;
-			padding: 0 50px;
-			position: relative;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-			opacity: 0.80;
-		}
-		.header {
-			font-size: 38px;
-			font-weight: bold;
-			text-align: center;
-			line-height: 200px;
-		}
-		.input-item {
-			display: block;
-			width: 100%;
-			margin-bottom: 20px;
-			border: 0;
-			padding: 10px;
-			border-bottom: 1px solid rgb(128, 125, 125);
-			font-size: 15px;
-			outline: none;
-		}
-		.input-item placeholder {
-			text-transform: uppercase;
-		}
-		.btn {
-			text-align: center;
-			padding: 10px;
-			width: 100%;
-			margin-top: 40px;
-			border: 0px;
-			background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
-			color: #fff;
-			border-radius: 6px;
-		}
-
-		.btn.active{
-			box-shadow: 0 4px 0 #243c47;
-			transform: translateY(4px); /* active时下移，按钮被按下的效果 */
-		}
-
-		.btn:hover{
-			/* 设置阴影 */
-			box-shadow: 1px 3px 10px 3px rgba(0, 0, 0, 0.3);
-			/* 字体变大 */
-			font-size: 1.01rem;
-			/* 边缘底部风格 */
-			border-bottom-style: groove;
-			/* 字体颜色 */
-			color: #fefefe;
-		}
-
-		.msg {
-			text-align: center;
-			line-height: 88px;
-		}
-		a {
-			text-decoration-line: none;
-			color: #abc1ee;
-		}
-	</style>
-
-	<script>
-		document.onkeydown = function(e) {
-			if (!e)
-				e = window.event;//火狐中是 window.event
-			if ((e.keyCode || e.which) == 13) {
-				submitFunc();
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>小星的家</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
 			}
-		}
-
-		window.onload = function (){
-			//点击登录时：跳转页面
-		};
-
-		//点击：登录
-		function submitFunc(){
-			var username = document.getElementById("username");
-			var password = document.getElementById("password");
-
-			// if(username.value === '李慧敏' && (password.value === 'nl816' || password.value === 'NL816')){
-			if(username.value === '李慧敏' && (password.value === '20050919')){
-				//账号密码：置位空
-				username.value = ''
-				password.value = ''
-				//跳转(首页)
-				window.location.href = "coding/home.html"
-			}else{
-				alert("账号或密码：有误，请重新输入。");
+			html {
+				height: 100%;
 			}
-		}
-	</script>
-</head>
-<body>
-<div class="container">
-	<div class="login-wrapper">
-		<div class="header">Cologne</div>
-		<div class="form-wrapper">
-			<input type="text" id="username" name="username" placeholder="username" value="" class="input-item"/>
-			<input type="password" id= "password" name="password" placeholder="password" value="" class="input-item"/>
-			<button id="loginBtn" class="btn" onclick="submitFunc()">登录</button>
+			body {
+				height: 100%;
+			}
+			.container {
+				height: 100%;
+				background-image: url("img/login/bg2.jpg");			position:absolute;
+				top:0;
+				left:0;
+				height:100%;
+				width:100%;
+				/*background-image:url("maskimg/star.jpg");*/
+				background-position: center 0;
+				background-repeat: no-repeat;
+				background-attachment:fixed;
+				background-size: cover;
+				-webkit-background-size: cover;/* 兼容Webkit内核浏览器如Chrome和Safari */
+				-o-background-size: cover;/* 兼容Opera */
+				zoom: 1;
+			}
+			.login-wrapper {
+				background-color: #fff;
+				width: 314px;
+				height: 460px;
+				border-radius: 15px;
+				padding: 0 50px;
+				position: relative;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				opacity: 0.80;
+			}
+			.header {
+				font-size: 38px;
+				font-weight: bold;
+				text-align: center;
+				line-height: 200px;
+			}
+			.input-item {
+				display: block;
+				width: 100%;
+				margin-bottom: 20px;
+				border: 0;
+				padding: 10px;
+				border-bottom: 1px solid rgb(128, 125, 125);
+				font-size: 15px;
+				outline: none;
+			}
+			.input-item placeholder {
+				text-transform: uppercase;
+			}
+			.btn {
+				text-align: center;
+				padding: 10px;
+				width: 100%;
+				margin-top: 40px;
+				border: 0px;
+				background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+				color: #fff;
+				border-radius: 6px;
+			}
+
+			.btn.active{
+				box-shadow: 0 4px 0 #243c47;
+				transform: translateY(4px); /* active时下移，按钮被按下的效果 */
+			}
+
+			.btn:hover{
+				/* 设置阴影 */
+				box-shadow: 1px 3px 10px 3px rgba(0, 0, 0, 0.3);
+				/* 字体变大 */
+				font-size: 1.01rem;
+				/* 边缘底部风格 */
+				border-bottom-style: groove;
+				/* 字体颜色 */
+				color: #fefefe;
+			}
+
+			.msg {
+				text-align: center;
+				line-height: 88px;
+			}
+			a {
+				text-decoration-line: none;
+				color: #abc1ee;
+			}
+		</style>
+		<script>
+			document.onkeydown = function(e) {
+				if (!e)
+					e = window.event;//火狐中是 window.event
+				if ((e.keyCode || e.which) == 13) {
+					submitFunc();
+				}
+			}
+
+			window.onload = function (){
+				//点击登录时：跳转页面
+			};
+
+			//点击：登录
+			function submitFunc(){
+				var username = document.getElementById("username");
+				var password = document.getElementById("password");
+
+				// if(username.value === '李慧敏' && (password.value === 'nl816' || password.value === 'NL816')){
+				if(username.value === '李慧敏' && (password.value === '20050919')){
+					//账号密码：置位空
+					username.value = ''
+					password.value = ''
+					//跳转(首页)
+					window.location.href = "coding/home.html"
+				}else{
+					alert("账号或密码：有误，请重新输入。");
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="login-wrapper">
+				<div class="header">Cologne</div>
+				<div class="form-wrapper">
+					<input type="text" id="username" name="username" placeholder="username" value="" class="input-item"/>
+					<input type="password" id= "password" name="password" placeholder="password" value="" class="input-item"/>
+					<button id="loginBtn" class="btn" onclick="submitFunc()">登录</button>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-</body>
+	</body>
 </html>
