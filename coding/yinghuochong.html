@@ -144,7 +144,7 @@
 <!--                    src="https://laoyangzhixuewang01.oss-cn-beijing.aliyuncs.com/yinghuocong.mp3"-->
 <!--                    loop="loop" autoplay="autoplay" preload="auto" style="display: none;"></audio>-->
 
-            <audio controls autoplay hidden="hidden">
+            <audio id="audio" controls autoplay hidden="hidden">
                 <source src="https://laoyang.oss-cn-shenzhen.aliyuncs.com/xiaoxing/newyinghuochong.mp3" type="audio/mp3">
             </audio>
         </div>
@@ -152,6 +152,17 @@
     </body>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        function audioAutoPlay() {
+            var audio = document.getElementById('audio');
+            audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audio.play();
+            }, false);
+        }
+        audioAutoPlay();
+        });
+
         const NUMBER_OF_LEAVES = 40;
         function init() {
             let container = document.getElementById('leafContainer');
